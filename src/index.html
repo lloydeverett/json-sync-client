@@ -6,7 +6,50 @@
     <link href="main.css" rel="stylesheet">
   </head>
   <body>
-    
+    <div id="container" class="container xl:max-w-screen-lg mx-auto p-12">
+      <h1 class="text-3xl font-semibold">json-sync-client</h1>
+
+      <section id="urlgen" class="hidden">
+        <p class="mt-5">Generate a URL here:</p>
+        <input id="hostnameField" type="text" class="mt-5 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Hostname (e.g. sync-server.example.com)"/>
+        <input id="tokenField" type="text" class="mt-4 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Auth token"/>
+        <a id="generatedLink" href="" class="mt-5 text-center text-purple-800 underline break-all"></a>
+      </section>
+
+      <section id="loader" class="hidden">
+        <svg class="animate-spin h-10 w-10 text-black mx-auto my-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </section>
+
+      <section id="main" class="hidden">
+        <textarea id="jsonField" class="font-mono mt-5 flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="JSON object" rows="14" cols="40"></textarea>
+        <div class="flex flex-col items-end">
+          <button id="saveButton" type="button" class="mt-4 py-2 px-5 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg ">
+            <svg width="20" height="20" fill="currentColor" class="mr-2" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1344 1472q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm256 0q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm128-224v320q0 40-28 68t-68 28h-1472q-40 0-68-28t-28-68v-320q0-40 28-68t68-28h427q21 56 70.5 92t110.5 36h256q61 0 110.5-36t70.5-92h427q40 0 68 28t28 68zm-325-648q-17 40-59 40h-256v448q0 26-19 45t-45 19h-256q-26 0-45-19t-19-45v-448h-256q-42 0-59-40-17-39 14-69l448-448q18-19 45-19t45 19l448 448q31 30 14 69z">
+                </path>
+            </svg>
+            Save
+          </button>
+          <p id="saveSuccess" class="hidden text-right mt-1 text-green-900">Saved successfully</p>
+          <p id="saveError" class="hidden text-right mt-1 text-red-900">An error occured while saving.<br>Check the developer console for more details.</p>
+        </div>
+      </section>
+
+      <section id="error" class="hidden">
+        <div class="mt-5 bg-red-200 border-red-600 text-red-600 border-l-4 p-4" role="alert">
+          <p class="font-bold">
+              Error
+          </p>
+          <p>
+              We're having trouble connecting to <span id="error-url"></span>. Check that the provided hostname and token in the URL parameters are correct or see the developer console for more info. You may want to <a href="/" class="underline">generate a new URL</a>.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <script src="index.ts" />
   </body>
 </html>
-
