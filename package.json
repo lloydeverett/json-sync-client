@@ -1,0 +1,7 @@
+{
+  "name": "json-sync-client",
+  "version": "1.0.0",
+  "description": "A web-based client for json-sync-server.",
+  "author": "Lloyd Everett",
+  "license": "MIT"
+}
