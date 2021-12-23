@@ -52,10 +52,10 @@ if (!token || !host) {
   }).then((res) => {
     if (res.ok) {
       const jsonField = document.getElementById("jsonField") as HTMLTextAreaElement;
-      res.text().then((obj) => {
-        // This means we've successfully fetched the current JSON. Fill the current
-        // value into the textarea
-        jsonField.value = obj;
+      res.json().then((obj) => {
+        // This means we've successfully fetched the current JSON. Start by filling the current
+        // value into the textarea.
+        jsonField.value = JSON.stringify(obj, null, 2); // spacing level = 2
 
         // Set up the onclick handler for the save button
         {
