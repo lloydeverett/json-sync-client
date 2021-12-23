@@ -3,5 +3,13 @@
   "version": "1.0.0",
   "description": "A web-based client for json-sync-server.",
   "author": "Lloyd Everett",
-  "license": "MIT"
+  "license": "MIT",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "parcel": "^2.0.1"
+  }
 }
