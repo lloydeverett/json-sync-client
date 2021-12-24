@@ -29,7 +29,7 @@ if (!token || !url) {
     } else {
       generatedLink.style.display = "inline-block";
       const currentUrl = new URL(location.href);
-      const url = new URL(currentUrl.origin);
+      const url = new URL(currentUrl.origin + currentUrl.pathname);
       url.searchParams.set("url", urlField.value);
       url.searchParams.set("token", tokenField.value);
       generatedLink.href = url.href;
