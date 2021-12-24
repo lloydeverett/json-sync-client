@@ -1,6 +1,6 @@
 const params = new URL(window.location.href).searchParams;
 const token = params.get("token");
-const host = params.get("host");
+const url = params.get("url");
 
 function onlyShowSection(elementId: string) {
   Array.from(document.getElementById("container").children).forEach(elem => {
@@ -15,34 +15,33 @@ function onlyShowSection(elementId: string) {
   });
 }
 
-if (!token || !host) {
+if (!token || !url) {
   // We need to help the user obtain a URL of the right form.
   onlyShowSection("urlgen");
 
-  const hostnameField = document.getElementById("hostnameField") as HTMLInputElement;
+  const urlField = document.getElementById("urlField") as HTMLInputElement;
   const tokenField = document.getElementById("tokenField") as HTMLInputElement;
   const generatedLink = document.getElementById("generatedLink") as HTMLAnchorElement;
 
   function generateLink() {
-    if (!hostnameField.value || !tokenField.value) {
+    if (!urlField.value || !tokenField.value) {
       generatedLink.style.display = "none";
     } else {
-      generatedLink.style.display = "block";
+      generatedLink.style.display = "inline-block";
       const currentUrl = new URL(location.href);
       const url = new URL(currentUrl.origin);
-      url.searchParams.set("host", hostnameField.value);
+      url.searchParams.set("url", urlField.value);
       url.searchParams.set("token", tokenField.value);
       generatedLink.href = url.href;
       generatedLink.innerText = url.href;
     }
   }
 
-  hostnameField.addEventListener("input", generateLink);
+  urlField.addEventListener("input", generateLink);
   tokenField.addEventListener("input", generateLink);
   generateLink();
 } else {
   onlyShowSection("loader");
-  const url = `https://${host}/`;
   document.getElementById("error-url").innerText = url; // in case we later show an error
 
   fetch(url, {

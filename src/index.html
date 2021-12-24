@@ -11,7 +11,7 @@
 
       <section id="urlgen" class="hidden">
         <p class="mt-5">Generate a URL here:</p>
-        <input id="hostnameField" type="text" class="mt-5 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Hostname (e.g. sync-server.example.com)"/>
+        <input id="urlField" type="text" class="mt-5 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="URL (e.g. https://sync-server.example.com/)"/>
         <input id="tokenField" type="text" class="mt-4 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" placeholder="Auth token"/>
         <a id="generatedLink" href="" class="mt-5 text-center text-purple-800 underline break-all"></a>
       </section>
@@ -44,7 +44,7 @@
               Error
           </p>
           <p>
-              We're having trouble connecting to <span id="error-url"></span>. Check that the provided hostname and token in the URL parameters are correct or see the developer console for more info. You may want to <a href="/" class="underline">generate a new URL</a>.
+              We're having trouble connecting to <span id="error-url"></span>. Check that the provided URL and token in the URL parameters are correct or see the developer console for more info. You may want to <a href="/" class="underline">generate a new URL</a>.
           </p>
         </div>
       </section>
